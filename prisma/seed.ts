@@ -100,7 +100,7 @@ async function main() {
 
   const collegeList: any[] = [];
 
-  // 1. Generate 20 Engineering Colleges
+  // 1. Generate 30 Engineering Colleges
   const engineeringNames = [
     "Indian Institute of Technology Delhi",
     "Indian Institute of Technology Bombay",
@@ -121,7 +121,17 @@ async function main() {
     "NIT Surathkal",
     "IIT Kanpur",
     "IIT Kharagpur",
-    "IIT Roorkee"
+    "IIT Roorkee",
+    "NIT Warangal",
+    "NIT Rourkela",
+    "NIT Calicut",
+    "IIIT Bangalore",
+    "IIIT Allahabad",
+    "PEC Technological University",
+    "Anna University College of Engineering Guindy",
+    "BITS Pilani Goa Campus",
+    "BITS Pilani Hyderabad Campus",
+    "Indian Institute of Technology Hyderabad"
   ];
 
   engineeringNames.forEach((name, idx) => {
@@ -163,7 +173,7 @@ async function main() {
     });
   });
 
-  // 2. Generate 20 MBA Colleges
+  // 2. Generate 30 MBA Colleges
   const mbaNames = [
     "Indian Institute of Management Ahmedabad",
     "Indian Institute of Management Bangalore",
@@ -184,7 +194,17 @@ async function main() {
     "IMT Ghaziabad",
     "XIMB Bhubaneswar",
     "Great Lakes Institute of Management",
-    "Goa Institute of Management"
+    "Goa Institute of Management",
+    "Indian Institute of Management Mumbai",
+    "Indian Institute of Management Shillong",
+    "Indian Institute of Management Udaipur",
+    "Indian Institute of Management Trichy",
+    "Indian Institute of Management Raipur",
+    "Indian Institute of Management Ranchi",
+    "Tata Institute of Social Sciences Mumbai",
+    "Vinod Gupta School of Management IIT Kharagpur",
+    "SCMHRD Pune",
+    "MICA Ahmedabad"
   ];
 
   mbaNames.forEach((name, idx) => {
@@ -225,7 +245,7 @@ async function main() {
     });
   });
 
-  // 3. Generate 20 Medical Colleges
+  // 3. Generate 30 Medical Colleges
   const medicalNames = [
     "All India Institute of Medical Sciences Delhi",
     "Christian Medical College Vellore",
@@ -246,7 +266,17 @@ async function main() {
     "B.J. Medical College Ahmedabad",
     "Osmania Medical College",
     "Government Medical College Kozhikode",
-    "AIIMS Jodhpur"
+    "AIIMS Jodhpur",
+    "AIIMS Bhubaneswar",
+    "AIIMS Bhopal",
+    "AIIMS Patna",
+    "AIIMS Raipur",
+    "AIIMS Rishikesh",
+    "Seth GS Medical College Mumbai",
+    "Stanley Medical College Chennai",
+    "SMS Medical College Jaipur",
+    "B.J. Medical College Pune",
+    "Government Medical College Nagpur"
   ];
 
   medicalNames.forEach((name, idx) => {
