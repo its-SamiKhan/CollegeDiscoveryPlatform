@@ -4,13 +4,13 @@ A robust, full-stack web application designed for the Indian higher education ec
 
 ---
 
-## Project Overview
+## 📋 Project Overview
 
 The College Discovery Platform addresses the critical challenge of navigating large-scale institutional datasets. It consolidates unstructured educational records into an indexed relational schema. The system allows users to execute complex multi-faceted filters, perform side-by-side comparative audits of up to three colleges with automated metric highlighting, utilize score-based predictors matching national entrance exam scores (JEE, NEET, CAT) to historic cutoffs, and collaborate via a threaded Q&A discussions board.
 
 ---
 
-## Key Features
+## 🚀 Key Features
 
 * **Indexed Directory Search**: Real-time filtering across 34,000+ colleges using state boundaries, rating metrics, tuition fees, and course streams (Engineering, MBA, Medical).
 * **Multi-College Comparison Engine**: Side-by-side spec auditing with automated highlight winners for placement rates, fee values, and ratings, supported by local cache persistence.
@@ -21,7 +21,7 @@ The College Discovery Platform addresses the critical challenge of navigating la
 
 ---
 
-## Architecture Decisions
+## 🏗️ Architecture Decisions
 
 ### 1. Next.js App Router
 Next.js App Router (React 19 Server Components) was selected to implement hybrid rendering strategies. By rendering the static layout and initial query results on the server, the application achieves fast first-contentful-paint (FCP) and search-engine discoverability (SEO). Dynamic sub-routing handles pages like `/colleges/[id]` asynchronously, resolving parameter promises natively to maintain framework compliance.
@@ -49,7 +49,7 @@ Zod was implemented on both the frontend (React Hook Form resolvers) and backend
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 * **Core Framework**: Next.js 16 (App Router), React 19, TypeScript
 * **Database & ORM**: PostgreSQL, Prisma ORM
@@ -60,7 +60,7 @@ Zod was implemented on both the frontend (React Hook Form resolvers) and backend
 
 ---
 
-## Folder Structure
+## 📂 Folder Structure
 
 ```
 src/
@@ -86,7 +86,7 @@ src/
 
 ---
 
-## Database Architecture
+## 🗄️ Database Architecture
 
 The relational schema is configured in PostgreSQL to support cascade operations, relational integrity, and search optimizations.
 
@@ -175,7 +175,7 @@ erDiagram
 
 ---
 
-## API Design
+## 📡 API Design
 
 The API endpoints conform to RESTful design standards. Each response returns a consistent structure containing payload validation markers:
 
@@ -201,7 +201,7 @@ The API endpoints conform to RESTful design standards. Each response returns a c
 
 ---
 
-## Performance Optimizations
+## ⚡ Performance Optimizations
 
 * **Batch Inserts (`createMany`)**: The data importer inserts records in chunk sizes of 2,000 using transactionless `createMany` query executions, importing 34,000+ rows into the cloud database in 15 seconds.
 * **Deterministic Hashed Image Fallbacks**: Implements a client-side lookup that hashes college names deterministically to assign one of 12 local assets, eliminating database storage overhead for image paths.
@@ -209,7 +209,7 @@ The API endpoints conform to RESTful design standards. Each response returns a c
 
 ---
 
-## Edge Cases Handled
+## 🛡️ Edge Cases Handled
 
 * **Invalid IDs**: Path variable validators return clean `404 Not Found` messages if database lookup keys are missing or malformed.
 * **Missing Placement Records**: Renders neutral labels (e.g. `N/A`) if placement average or highest values are undefined.
@@ -220,7 +220,7 @@ The API endpoints conform to RESTful design standards. Each response returns a c
 
 ---
 
-## Tradeoffs & Engineering Decisions
+## ⚖️ Tradeoffs & Engineering Decisions
 
 * **Pagination vs. Infinite Scrolling**: Pagination was chosen to maintain database index safety. Infinite scroll patterns introduce DOM memory leaks on larger page counts and break URL shareability, whereas sliding-window pagination preserves resource footprint and allows shareable search links.
 * **Database-Level Filtering vs. Client Filtering**: In-memory JavaScript sorting degrades client runtime performance on lists with 34,000+ items. Performing queries directly in PostgreSQL allows database engine optimization and ensures low transmission overhead.
@@ -228,7 +228,7 @@ The API endpoints conform to RESTful design standards. Each response returns a c
 
 ---
 
-## Local Setup
+## 🔧 Local Setup
 
 ### 1. Clone and Install Dependencies
 ```bash
@@ -263,7 +263,7 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## Environment Variables
+## 🔒 Environment Variables
 
 | Variable Name | Description | Example Value |
 |:---|:---|:---|
@@ -273,7 +273,7 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
-## Dataset & Data Ingestion Pipeline
+## 📊 Dataset & Data Ingestion Pipeline
 
 ### 1. The Dataset
 The application utilizes a comprehensive Indian educational dataset consisting of **34,000+ unique college profiles** sourced from the University Grants Commission (UGC) and All India Survey on Higher Education (AISHE) public records.
@@ -300,7 +300,7 @@ To optimize system performance and feature relevance, the database runs two para
 
 ---
 
-## Authentication
+## 🔐 Authentication
 
 Authentication is handled by **NextAuth.js** utilizing a **JSON Web Token (JWT) strategy**:
 * **Credentials Flow**: Secure login using encrypted password hashing (`bcryptjs`) against registered users.
@@ -308,7 +308,7 @@ Authentication is handled by **NextAuth.js** utilizing a **JSON Web Token (JWT) 
 
 ---
 
-## Testing & Verification
+## 🧪 Testing & Verification
 
 The platform has been audited using static analysis and manual verification checks:
 
@@ -327,7 +327,7 @@ The platform has been audited using static analysis and manual verification chec
 
 ---
 
-## Future Improvements
+## 🔮 Future Improvements
 
 * **Google OAuth**: Integrate Google sign-in flow.
 * **Redis Cache Layer**: Implement Redis key-value caching to cache search endpoints and reduce PostgreSQL read loads.
@@ -336,7 +336,7 @@ The platform has been audited using static analysis and manual verification chec
 
 ---
 
-## Deployment
+## 📦 Deployment
 
 The application is configured for deployment on **Vercel** with a serverless database on **Neon PostgreSQL**:
 1. Environment variables (`DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`) must be configured in Vercel settings.
@@ -344,6 +344,6 @@ The application is configured for deployment on **Vercel** with a serverless dat
 
 ---
 
-## Author
+## 👤 Author
 
-Developed & Maintained by **[Sami Khan](https://github.com/its-SamiKhan)**.
+Developed with 💻 & ☕ by **[Sami Khan (its-SamiKhan)](https://github.com/its-SamiKhan)**.
