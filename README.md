@@ -346,4 +346,4 @@ The application is configured for deployment on **Vercel** with a serverless dat
 
 ## Author
 
-Developed & Maintained by **[Sami Khan (its-SamiKhan)](https://github.com/its-SamiKhan)**.
+Developed & Maintained by **[Sami Khan](https://github.com/its-SamiKhan)**.
