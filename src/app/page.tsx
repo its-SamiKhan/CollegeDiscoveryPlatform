@@ -99,9 +99,9 @@ function FeaturedCollegesSkeleton() {
 export default async function HomePage() {
 
   const categories = [
-    { name: "Engineering", slug: "engineering", count: "20+ Colleges", icon: <GraduationCap size={22} />, color: "text-blue-600 bg-blue-50/80 dark:bg-blue-950/30 border-blue-100 dark:border-blue-900/30" },
-    { name: "MBA / Business", slug: "mba", count: "20+ Colleges", icon: <Building2 size={22} />, color: "text-indigo-600 bg-indigo-50/80 dark:bg-indigo-950/30 border-indigo-100 dark:border-indigo-900/30" },
-    { name: "Medical / Healthcare", slug: "medical", count: "20+ Colleges", icon: <BookOpen size={22} />, color: "text-rose-600 bg-rose-50/80 dark:bg-rose-950/30 border-rose-100 dark:border-rose-900/30" }
+    { name: "Engineering", slug: "engineering", count: "15,000+ Colleges", icon: <GraduationCap size={22} />, color: "text-blue-600 bg-blue-50/80 dark:bg-blue-950/30 border-blue-100 dark:border-blue-900/30" },
+    { name: "MBA / Business", slug: "mba", count: "10,000+ Colleges", icon: <Building2 size={22} />, color: "text-indigo-600 bg-indigo-50/80 dark:bg-indigo-950/30 border-indigo-100 dark:border-indigo-900/30" },
+    { name: "Medical / Healthcare", slug: "medical", count: "8,000+ Colleges", icon: <BookOpen size={22} />, color: "text-rose-600 bg-rose-50/80 dark:bg-rose-950/30 border-rose-100 dark:border-rose-900/30" }
   ];
 
   const popularStates = ["Delhi", "Maharashtra", "Karnataka", "Tamil Nadu", "Telangana", "Uttar Pradesh"];
