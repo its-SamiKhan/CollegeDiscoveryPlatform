@@ -71,6 +71,42 @@ export default function CollegeDetailView({ college, isInitiallySaved }: College
   const [saveLoading, setSaveLoading] = useState(false);
   const [isCompared, setIsCompared] = useState(false);
 
+  // Dynamic high-quality campus fallback images
+  const fallbackImages = [
+    "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1498243691581-b145c3f54a5c?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1586773860418-d37222d8fce2?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80"
+  ];
+
+  // String hashing to assign a consistent, beautiful photo based on name
+  const getFallbackImage = (name: string) => {
+    let hash = 0;
+    for (let j = 0; j < name.length; j++) {
+      hash = name.charCodeAt(j) + ((hash << 5) - hash);
+    }
+    const idx = Math.abs(hash) % fallbackImages.length;
+    return fallbackImages[idx];
+  };
+
+  const initialImg = college.imageUrl && college.imageUrl.startsWith("http")
+    ? college.imageUrl
+    : getFallbackImage(college.name);
+
+  const [imgSrc, setImgSrc] = useState(initialImg);
+
+  const handleImageError = () => {
+    setImgSrc(getFallbackImage(college.name));
+  };
+
   // Form states for adding reviews (mock submission UX)
   const [reviewRating, setReviewRating] = useState(5);
   const [reviewComment, setReviewComment] = useState("");
@@ -94,7 +130,7 @@ export default function CollegeDetailView({ college, isInitiallySaved }: College
           location: college.location,
           fees: college.fees,
           rating: college.rating,
-          imageUrl: college.imageUrl,
+          imageUrl: imgSrc,
           courses: college.courses,
           facilities: college.facilities,
           placementAverage: college.placementAverage,
@@ -211,8 +247,9 @@ export default function CollegeDetailView({ college, isInitiallySaved }: College
         {/* Banner Left Image */}
         <div className="md:w-1/3 relative h-64 md:h-auto overflow-hidden bg-slate-100 dark:bg-slate-850">
           <img
-            src={college.imageUrl}
+            src={imgSrc}
             alt={college.name}
+            onError={handleImageError}
             className="w-full h-full object-cover"
           />
         </div>
