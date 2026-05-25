@@ -225,3 +225,7 @@ All backend API handlers are located under `src/app/api/` and utilize Zod schema
 | **GET** | `/api/discussions` | Retrieves discussions and questions from the Q&A forum | Optional search query |
 | **POST** | `/api/discussions` | Posts a new student question thread | `{ title: "string", content: "string" }` |
 | **POST** | `/api/discussions/[id]/answers`| Submits a reply/answer to a discussion thread | `{ content: "string" }` |
+
+---
+
+Developed with 💻 & ☕ by **[Sami Khan (its-SamiKhan)](https://github.com/its-SamiKhan)**.
