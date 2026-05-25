@@ -119,35 +119,6 @@ function LoginFormContent() {
             </Button>
           </form>
 
-          {/* Social Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200 dark:border-slate-800"></div>
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-slate-900 px-3 text-slate-500 font-semibold">Or continue with</span>
-            </div>
-          </div>
-
-          {/* Google Sign in */}
-          <button
-            type="button"
-            onClick={handleGoogleLogin}
-            disabled={googleLoading}
-            className="w-full py-2.5 px-4 text-sm border border-slate-300 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-850 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-205 font-bold rounded-lg flex items-center justify-center gap-2 cursor-pointer shadow-sm disabled:opacity-60 transition-all"
-          >
-            {googleLoading ? (
-              <Loader2 className="animate-spin text-slate-400" size={16} />
-            ) : (
-              <svg className="w-4 h-4" viewBox="0 0 24 24">
-                <path
-                  fill="#EA4335"
-                  d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.2-5.136 4.2A5.76 5.76 0 0 1 8 12.857a5.76 5.76 0 0 1 5.99-5.748c2.4 0 4.117 1.436 4.974 2.22l3.213-3.213C20.125 4.09 17.15 2 13.99 2A9.99 9.99 0 0 0 4 12a9.99 9.99 0 0 0 9.99 10c5.39 0 9.77-3.89 9.77-10 0-.696-.063-1.353-.18-1.715h-11.34Z"
-                />
-              </svg>
-            )}
-            Sign In with Google
-          </button>
 
           {/* Prompt to register */}
           <p className="text-center text-xs text-slate-500 mt-6 font-medium">

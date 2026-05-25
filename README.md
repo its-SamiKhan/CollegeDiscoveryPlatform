@@ -48,7 +48,7 @@ Developed & Maintained by **[Sami Khan](https://github.com/its-SamiKhan)**.
 * **Forms & Validation**: React Hook Form + Zod
 * **Backend**: Next.js API Route Handlers
 * **Database & ORM**: PostgreSQL (Neon Serverless) + Prisma ORM (v7.8)
-* **Authentication**: NextAuth.js (Credentials & Google OAuth Provider)
+* **Authentication**: NextAuth.js (Credentials Provider — Google OAuth to be added in future updates)
 
 ---
 
@@ -173,9 +173,9 @@ DATABASE_URL="postgresql://username:password@localhost:5432/dbname?sslmode=requi
 NEXTAUTH_SECRET="your-generated-nextauth-secret-key-32-chars"
 NEXTAUTH_URL="http://localhost:3000"
 
-# (Optional) Google OAuth Keys for Google Login
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
+# (Future Addition) Google OAuth Keys for Google Login
+# GOOGLE_CLIENT_ID="your-google-client-id"
+# GOOGLE_CLIENT_SECRET="your-google-client-secret"
 ```
 
 ### 3. Setup Database Schema

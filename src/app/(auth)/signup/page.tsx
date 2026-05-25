@@ -127,15 +127,6 @@ export default function SignupPage() {
             </Button>
           </form>
 
-          {/* Social Divider */}
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200 dark:border-slate-800"></div>
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white dark:bg-slate-900 px-3 text-slate-505 font-semibold">Or</span>
-            </div>
-          </div>
 
           {/* Prompt to login */}
           <p className="text-center text-xs text-slate-500 mt-4 font-medium">
