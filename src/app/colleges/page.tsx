@@ -254,59 +254,27 @@ function CollegesSearchContent() {
                       {(() => {
                         const totalPages = pagination.totalPages;
                         const currentPage = pagination.page;
-                        const visiblePages: (number | string)[] = [];
-
-                        if (totalPages <= 7) {
-                          // Show all pages if total pages are 7 or less
-                          for (let p = 1; p <= totalPages; p++) visiblePages.push(p);
-                        } else {
-                          // Always include the first page
-                          visiblePages.push(1);
-
-                          if (currentPage > 4) {
-                            visiblePages.push("...");
-                          }
-
-                          // Calculate sliding window around current page
-                          const start = Math.max(2, currentPage - 2);
-                          const end = Math.min(totalPages - 1, currentPage + 2);
-
-                          if (currentPage <= 4) {
-                            for (let p = 2; p <= 5; p++) {
-                              visiblePages.push(p);
-                            }
-                          } else if (currentPage >= totalPages - 3) {
-                            for (let p = totalPages - 4; p <= totalPages - 1; p++) {
-                              visiblePages.push(p);
-                            }
-                          } else {
-                            for (let p = start; p <= end; p++) {
-                              visiblePages.push(p);
-                            }
-                          }
-
-                          if (currentPage < totalPages - 3) {
-                            visiblePages.push("...");
-                          }
-
-                          // Always include the last page
-                          visiblePages.push(totalPages);
+                        
+                        // Calculate a sliding window of exactly 5 pages centered around the current page
+                        let start = Math.max(1, currentPage - 2);
+                        let end = Math.min(totalPages, currentPage + 2);
+                        
+                        // Adjust if we are near the start or the end of the page list
+                        if (currentPage <= 3) {
+                          start = 1;
+                          end = Math.min(totalPages, 5);
+                        } else if (currentPage >= totalPages - 2) {
+                          start = Math.max(1, totalPages - 4);
+                          end = totalPages;
+                        }
+                        
+                        const visiblePages: number[] = [];
+                        for (let p = start; p <= end; p++) {
+                          visiblePages.push(p);
                         }
 
-                        return visiblePages.map((pageNum, idx) => {
+                        return visiblePages.map((pageNum) => {
                           const isCurrent = pageNum === currentPage;
-                          const isEllipsis = pageNum === "...";
-
-                          if (isEllipsis) {
-                            return (
-                              <span
-                                key={`ellipsis-${idx}`}
-                                className="w-8 h-8 flex items-center justify-center text-xs font-semibold text-slate-400"
-                              >
-                                ...
-                              </span>
-                            );
-                          }
 
                           return (
                             <button
