@@ -113,7 +113,16 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs gap-4 text-slate-500 font-medium">
           <p>&copy; {new Date().getFullYear()} CollegeDiscovery. All rights reserved.</p>
           <p className="hover:text-slate-400 transition-colors">
-            Designed & crafted for premier student decision making.
+            Designed & crafted by{" "}
+            <a
+              href="https://github.com/its-SamiKhan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-700 hover:text-indigo-400 dark:text-slate-800 dark:hover:text-indigo-400 transition-colors duration-200"
+            >
+              Sami Khan
+            </a>{" "}
+            for premier student decision making.
           </p>
         </div>
       </div>

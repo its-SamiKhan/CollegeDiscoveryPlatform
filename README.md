@@ -2,6 +2,8 @@
 
 A production-grade, highly scalable, and visually stunning Full-Stack College Discovery & Decision-Making Platform designed for the Indian educational ecosystem. Built with a modern, high-contrast, above-the-fold aesthetic, the application enables students to explore over **34,000+ colleges** (seeded from UGC/AISHE datasets), perform dynamic side-by-side comparisons, run rank predictions based on national exams, bookmark colleges, and participate in a threaded student discussion forum.
 
+Developed & Maintained by **[Sami Khan](https://github.com/its-SamiKhan)**.
+
 ---
 
 ## ✨ Primary Platform Features
