@@ -55,6 +55,29 @@ export const authOptions: NextAuthOptions = {
     error: "/login",
   },
   callbacks: {
+    async signIn({ user, account }) {
+      if (account?.provider === "google") {
+        if (!user.email) return false;
+        
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email },
+        });
+
+        if (!existingUser) {
+          const newUser = await prisma.user.create({
+            data: {
+              email: user.email,
+              name: user.name || "Google Scholar",
+              image: user.image || null,
+            },
+          });
+          user.id = newUser.id;
+        } else {
+          user.id = existingUser.id;
+        }
+      }
+      return true;
+    },
     async jwt({ token, user, trigger, session }) {
       if (user) {
         token.id = user.id;
