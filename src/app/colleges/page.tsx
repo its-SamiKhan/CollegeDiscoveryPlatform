@@ -251,24 +251,79 @@ function CollegesSearchContent() {
                     </Button>
                     
                     <div className="flex items-center gap-1">
-                      {Array.from({ length: pagination.totalPages }).map((_, idx) => {
-                        const pageNum = idx + 1;
-                        const isCurrent = pageNum === pagination.page;
-                        return (
-                          <button
-                            key={pageNum}
-                            onClick={() => handleFilterChange("page", String(pageNum))}
-                            className={`w-8 h-8 rounded-lg text-xs font-semibold border flex items-center justify-center cursor-pointer transition-colors
-                              ${
-                                isCurrent
-                                  ? "bg-indigo-600 border-indigo-600 text-white font-bold"
-                                  : "border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
-                              }`}
-                          >
-                            {pageNum}
-                          </button>
-                        );
-                      })}
+                      {(() => {
+                        const totalPages = pagination.totalPages;
+                        const currentPage = pagination.page;
+                        const visiblePages: (number | string)[] = [];
+
+                        if (totalPages <= 7) {
+                          // Show all pages if total pages are 7 or less
+                          for (let p = 1; p <= totalPages; p++) visiblePages.push(p);
+                        } else {
+                          // Always include the first page
+                          visiblePages.push(1);
+
+                          if (currentPage > 4) {
+                            visiblePages.push("...");
+                          }
+
+                          // Calculate sliding window around current page
+                          const start = Math.max(2, currentPage - 2);
+                          const end = Math.min(totalPages - 1, currentPage + 2);
+
+                          if (currentPage <= 4) {
+                            for (let p = 2; p <= 5; p++) {
+                              visiblePages.push(p);
+                            }
+                          } else if (currentPage >= totalPages - 3) {
+                            for (let p = totalPages - 4; p <= totalPages - 1; p++) {
+                              visiblePages.push(p);
+                            }
+                          } else {
+                            for (let p = start; p <= end; p++) {
+                              visiblePages.push(p);
+                            }
+                          }
+
+                          if (currentPage < totalPages - 3) {
+                            visiblePages.push("...");
+                          }
+
+                          // Always include the last page
+                          visiblePages.push(totalPages);
+                        }
+
+                        return visiblePages.map((pageNum, idx) => {
+                          const isCurrent = pageNum === currentPage;
+                          const isEllipsis = pageNum === "...";
+
+                          if (isEllipsis) {
+                            return (
+                              <span
+                                key={`ellipsis-${idx}`}
+                                className="w-8 h-8 flex items-center justify-center text-xs font-semibold text-slate-400"
+                              >
+                                ...
+                              </span>
+                            );
+                          }
+
+                          return (
+                            <button
+                              key={`page-${pageNum}`}
+                              onClick={() => handleFilterChange("page", String(pageNum))}
+                              className={`w-8 h-8 rounded-lg text-xs font-semibold border flex items-center justify-center cursor-pointer transition-colors
+                                ${
+                                  isCurrent
+                                    ? "bg-indigo-600 border-indigo-600 text-white font-bold"
+                                    : "border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300"
+                                }`}
+                            >
+                              {pageNum}
+                            </button>
+                          );
+                        });
+                      })()}
                     </div>
 
                     <Button
