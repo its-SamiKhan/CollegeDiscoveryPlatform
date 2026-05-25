@@ -285,6 +285,19 @@ Data parsing and database seeding are managed dynamically by the ingestion scrip
 * **Stream Classification Classifier**: Analyzes names to classify colleges into `engineering`, `mba`, or `medical` streams. If name heuristics are neutral, a proportional modulo distribution is used.
 * **Transactionless Bulk Insertion**: Splits the records into batches of 2,000, using Prisma's `createMany` query to bypass Neon PostgreSQL connection and transaction limitations. This imports all 34,000+ colleges in under 15 seconds.
 
+### 3. Dataset Compatibility Matrix
+To optimize system performance and feature relevance, the database runs two parallel datasets. The bulk UGC/AISHE CSV data contains raw organizational specs without historical entrance exam cutoff ranges; thus, the Rank Predictor tool is designed to query the pre-configured Elite Seeded dataset.
+
+| Feature / Functionality | 🎓 Elite Seeded Dataset (90 Colleges) | 📊 UGC / AISHE Bulk Dataset (33,950 Colleges) |
+| :--- | :---: | :---: |
+| **Paginated Search Directory** | ✅ Supported | ✅ Supported |
+| **Multi-faceted Filtering** (Fees, State, Rating) | ✅ Supported | ✅ Supported |
+| **Side-by-Side Comparison Engine** | ✅ Supported | ✅ Supported |
+| **Detailed Specs & Facility Views** | ✅ Supported | ✅ Supported |
+| **Bookmarks & Saved Comparisons** | ✅ Supported | ✅ Supported |
+| **Q&A Discussions Forum** | ✅ Supported (Pre-seeded Threads) | ✅ Supported (User-Submitted Threads) |
+| **Rank/Score Predictor Tool** | ✅ Supported (Pre-configured Cutoffs) | ❌ Unsupported (No exam cutoff metadata) |
+
 ---
 
 ## Authentication
