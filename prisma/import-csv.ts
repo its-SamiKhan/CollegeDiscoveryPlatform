@@ -338,7 +338,9 @@ async function main() {
     if (!row.trim()) continue;
 
     const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(col => col.replace(/^"|"$/g, "").trim());
-    const rawName = columns[0];
+    
+    // col.name is at index 7 in the CSV structure
+    const rawName = columns[7];
     if (!rawName) continue;
 
     const name = rawName.trim();
@@ -348,8 +350,8 @@ async function main() {
     if (processedSlugs.has(slug) || eliteSlugs.has(slug)) continue;
     processedSlugs.add(slug);
 
-    const state = columns[4] || "Delhi"; 
-    const city = columns[5] || "New Delhi";  
+    const state = columns[11] || "Delhi";  // col.state is at index 11
+    const city = columns[12] || "New Delhi";  // col.dist is at index 12
 
     // Dynamic stream classification
     const nameLower = name.toLowerCase();
@@ -430,7 +432,7 @@ async function main() {
       state,
       fees,
       rating,
-      establishedYear: 1950 + (i % 70),
+      establishedYear: parseInt(columns[3]) || 1950 + (i % 70), // col.year.est is at index 3
       imageUrl: category === "mba" 
         ? "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
         : category === "medical"
